@@ -1,11 +1,14 @@
 const express = require('express')
+const app = express()
 const cors = require('cors')
+const blogsRouter = require('./controllers/blog')
 const mongoose = require('mongoose')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
-const blogsRouter = require('./controllers/blog')
 
-const app = express()
+
+
+mongoose.set('strictQuery', false)
 
 mongoose.connect(config.MONGO_URL)
   .then(() => {
